@@ -60,7 +60,31 @@ class Solution:
             
 # Valid Palendrome 
 
-actual_string = []
+
+# A array of strings of pranthasis is given.
+# the array is valid if all the opening bracket is closed with a close bracket.
+# the closing bracket should be of the same type as that of the opening baracket.
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []  # stacks to store all the brackets                     
+        opening_br = set(["(","[","{"])# getting all types of opening bracket.
+        br_relationship = {
+            ")":"(","}":"{","]":"["
+        }# showing the relationship of all the closing bracket and closing bracket
+    
+        for i in s : #uing a for loop to itterate through the aray
+            if i in opening_br :
+                stack.append(i)
+            elif stack and stack[-1] == br_relationship[i] :#if stack is not empty and if the lass element in the stack and the closing bracket maches then pop the set of brackets 
+                stack.pop()
+            else:
+                return False
+
+        if stack:
+            return False 
+        else :
+            return True
 
 
 
